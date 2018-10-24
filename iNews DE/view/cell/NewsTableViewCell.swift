@@ -18,6 +18,7 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var img: UIImageView!
     
     @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var bgViewForShadow: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,11 +33,11 @@ class NewsTableViewCell: UITableViewCell {
         backgroundColor = UIColor.clear
         
         bgView.layer.cornerRadius = 15
-        img.layer.cornerRadius = 15
+        bgViewForShadow.layer.cornerRadius = 15
         
-        bgView.layer.shadowColor = UIColor.black.cgColor
-        bgView.layer.shadowOpacity = 0.2
-        bgView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        bgViewForShadow.layer.shadowColor = UIColor.black.cgColor
+        bgViewForShadow.layer.shadowOpacity = 0.2
+        bgViewForShadow.layer.shadowOffset = CGSize(width: 5, height: 5)
     }
     
     override func prepareForReuse() {
