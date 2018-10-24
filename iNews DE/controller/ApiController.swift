@@ -13,10 +13,10 @@ class ApiController {
     
     static let shared = ApiController()
     
-    private let baseUrl = "https://www.gamesundbusiness.de"
+    static let baseUrl = "https://www.gamesundbusiness.de"
     
     func getAllNews(onComplition: @escaping ([News]?)->()){
-        request(baseUrl+"/index.php?id=581", method: .get).responseJSON { (dataResponse: DataResponse<Any>) in
+        request(ApiController.baseUrl+"/index.php?id=581", method: .get).responseJSON { (dataResponse: DataResponse<Any>) in
             
             guard let statusCode = dataResponse.response?.statusCode else {
                 onComplition(nil)

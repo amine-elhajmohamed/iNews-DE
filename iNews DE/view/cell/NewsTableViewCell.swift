@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class NewsTableViewCell: UITableViewCell {
 
@@ -40,6 +41,7 @@ class NewsTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        img.sd_cancelCurrentImageLoad()
         img.image = UIImage(named: "ImagePlaceholder")
     }
     
@@ -47,6 +49,17 @@ class NewsTableViewCell: UITableViewCell {
         lblTitle.text = news.title
         lblSubTitle.text = news.subTitle
         lblShortDescription.text = news.shortDescription
+        
+        if let newsOriginalImageUrl = news.originalImageUrl {
+            img.sd_setImage(with: URL(string: ApiController.baseUrl + newsOriginalImageUrl), placeholderImage: UIImage(named: "ImagePlaceholder"), options: [.retryFailed])
+        }
+        
+        if let newsThumbImageUrl = news.thumbImageUrl {
+            //Used to download the thumb image to the cache
+            SDWebImageManager.shared().loadImage(with: URL(string: ApiController.baseUrl + newsThumbImageUrl), options: [.retryFailed], progress: nil) { (image: UIImage?, data: Data?, error: Error?, cacheType: SDImageCacheType, success: Bool, url: URL?) in
+            }
+        }
+        
     }
     
 }

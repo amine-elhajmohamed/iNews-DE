@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class NewsCollectionViewCell: UICollectionViewCell {
     
@@ -40,11 +41,23 @@ class NewsCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        img.sd_cancelCurrentImageLoad()
         img.image = UIImage(named: "ImagePlaceholder")
     }
     
     func loadViewFromNews(news: News){
         lblTitle.text = news.title
+        
+        if let newsThumbImageUrl = news.thumbImageUrl {
+            img.sd_setImage(with: URL(string: ApiController.baseUrl + newsThumbImageUrl), placeholderImage: UIImage(named: "ImagePlaceholder"), options: [.retryFailed])
+        }
+        
+        if let newsOriginalImageUrl = news.originalImageUrl {
+            //Used to download the original image to the cache
+            SDWebImageManager.shared().loadImage(with: URL(string: ApiController.baseUrl + newsOriginalImageUrl), options: [.retryFailed], progress: nil) { (image: UIImage?, data: Data?, error: Error?, cacheType: SDImageCacheType, success: Bool, url: URL?) in
+            }
+        }
+        
     }
     
 }
