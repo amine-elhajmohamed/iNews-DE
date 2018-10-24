@@ -11,6 +11,9 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableViewNews: UITableView!
+    @IBOutlet weak var collectionViewNews: UICollectionView!
+    
+    private let collectionViewCellIdentifier = "NewsCollectionViewCell"
     
     private var news: [News] = []
     
@@ -26,6 +29,11 @@ class HomeViewController: UIViewController {
     private func configureView(){
         tableViewNews.delegate = self
         tableViewNews.dataSource = self
+        
+        collectionViewNews.delegate = self
+        collectionViewNews.dataSource = self
+        
+        collectionViewNews.register(UINib(nibName: "NewsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: collectionViewCellIdentifier)
     }
     
     private func loadData(){
@@ -38,6 +46,7 @@ class HomeViewController: UIViewController {
             }
             
             self.tableViewNews.reloadData()
+            self.collectionViewNews.reloadData()
         }
     }
 
@@ -57,6 +66,28 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.loadViewFromNews(news: news[indexPath.row])
         
         return cell
+    }
+    
+}
+
+//MARK:- extension:  UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewFlowLayout
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return news.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewCellIdentifier, for: indexPath) as! NewsCollectionViewCell
+        
+        cell.loadViewFromNews(news: news[indexPath.row])
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenWidth = collectionView.bounds.size.width
+        return CGSize(width: screenWidth / 2, height: screenWidth / 2)
     }
     
 }

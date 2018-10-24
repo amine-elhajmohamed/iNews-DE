@@ -82,6 +82,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ImagePlaceholder" width="1200" height="900"/>
+        <image name="ImagePlaceholder" width="400" height="300"/>
     </resources>
 </document>
