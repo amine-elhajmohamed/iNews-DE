@@ -12,6 +12,9 @@
 		335059BC217FCD43004BA552 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 335059BA217FCD43004BA552 /* Main.storyboard */; };
 		335059BE217FCD44004BA552 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 335059BD217FCD44004BA552 /* Assets.xcassets */; };
 		335059C1217FCD44004BA552 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 335059BF217FCD44004BA552 /* LaunchScreen.storyboard */; };
+		335059CC217FCE52004BA552 /* ApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335059CB217FCE52004BA552 /* ApiController.swift */; };
+		335059CE217FCF1F004BA552 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335059CD217FCF1F004BA552 /* News.swift */; };
+		335059D0217FD8FA004BA552 /* NewsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335059CF217FD8FA004BA552 /* NewsUtils.swift */; };
 		FAB15642FE1A4FD75EF48D73 /* Pods_iNews_DE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9C94A1ACD8AFC5BF15F3453 /* Pods_iNews_DE.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +26,9 @@
 		335059BD217FCD44004BA552 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		335059C0217FCD44004BA552 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		335059C2217FCD44004BA552 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		335059CB217FCE52004BA552 /* ApiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiController.swift; sourceTree = "<group>"; };
+		335059CD217FCF1F004BA552 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		335059CF217FD8FA004BA552 /* NewsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsUtils.swift; sourceTree = "<group>"; };
 		5EF43E89E0D2400DBBCB4923 /* Pods-iNews DE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iNews DE.release.xcconfig"; path = "Pods/Target Support Files/Pods-iNews DE/Pods-iNews DE.release.xcconfig"; sourceTree = "<group>"; };
 		844730694F65DC17E88DF7B9 /* Pods-iNews DE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iNews DE.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iNews DE/Pods-iNews DE.debug.xcconfig"; sourceTree = "<group>"; };
 		F9C94A1ACD8AFC5BF15F3453 /* Pods_iNews_DE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iNews_DE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +88,8 @@
 		335059C8217FCD97004BA552 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				335059CB217FCE52004BA552 /* ApiController.swift */,
+				335059CF217FD8FA004BA552 /* NewsUtils.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -89,6 +97,7 @@
 		335059C9217FCD9C004BA552 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				335059CD217FCF1F004BA552 /* News.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -123,6 +132,7 @@
 				335059AF217FCD43004BA552 /* Sources */,
 				335059B0217FCD43004BA552 /* Frameworks */,
 				335059B1217FCD43004BA552 /* Resources */,
+				0B5E83145B76527BD2E815CC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -180,6 +190,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0B5E83145B76527BD2E815CC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iNews DE/Pods-iNews DE-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iNews DE/Pods-iNews DE-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		45B511BAD357485697C0C4E9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -206,7 +234,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				335059B9217FCD43004BA552 /* ViewController.swift in Sources */,
+				335059D0217FD8FA004BA552 /* NewsUtils.swift in Sources */,
 				335059B7217FCD43004BA552 /* AppDelegate.swift in Sources */,
+				335059CE217FCF1F004BA552 /* News.swift in Sources */,
+				335059CC217FCE52004BA552 /* ApiController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

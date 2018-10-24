@@ -7,4 +7,6 @@ target 'iNews DE' do
 
   # Pods for iNews DE
 
+pod 'Alamofire'
+
 end
