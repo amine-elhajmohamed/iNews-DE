@@ -9,9 +9,13 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
+    @IBOutlet weak var segmentControlChangeDisplayMode: UISegmentedControl!
+    
     @IBOutlet weak var tableViewNews: UITableView!
     @IBOutlet weak var collectionViewNews: UICollectionView!
+    
+    private var currentDisplayMode: DisplayMode!
     
     private let collectionViewCellIdentifier = "NewsCollectionViewCell"
     
@@ -22,6 +26,7 @@ class HomeViewController: UIViewController {
 
         configureView()
         loadData()
+        setDisplayMode(to: .list)
     }
     
     //MARK:- View configurations
@@ -34,6 +39,9 @@ class HomeViewController: UIViewController {
         collectionViewNews.dataSource = self
         
         collectionViewNews.register(UINib(nibName: "NewsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: collectionViewCellIdentifier)
+        
+        tableViewNews.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        collectionViewNews.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
     }
     
     private func loadData(){
@@ -49,7 +57,68 @@ class HomeViewController: UIViewController {
             self.collectionViewNews.reloadData()
         }
     }
+    
+    private func setDisplayMode(to newDisplayMode: DisplayMode){
+        guard currentDisplayMode != newDisplayMode else {
+            return
+        }
+        
+        currentDisplayMode = newDisplayMode
+        
+        changeScollPos(newDisplayMode: newDisplayMode)
+        
+        switch newDisplayMode {
+        case .list:
+            collectionViewNews.isHidden = true
+            tableViewNews.isHidden = false
+        case .grid:
+            tableViewNews.isHidden = true
+            collectionViewNews.isHidden = false
+        }
+    }
+    
+    private func changeScollPos(newDisplayMode: DisplayMode){
+        switch newDisplayMode {
+        case .list:
+            var indexOfVisibleItems = collectionViewNews.indexPathsForVisibleItems.map { (i: IndexPath) -> Int in
+                return i.row
+            }
+            
+            indexOfVisibleItems.sort() // Need to sort it in collection view but not required for tableView
+            
+            if let firstVisibleItem = indexOfVisibleItems.first {
+                tableViewNews.scrollToRow(at: IndexPath(row: firstVisibleItem, section: 0), at: .top, animated: false)
+            }
+        case .grid:
+            if let indexOfVisibleRows = tableViewNews.indexPathsForVisibleRows, let firstVisibletRow = indexOfVisibleRows.first?.row {
+                collectionViewNews.scrollToItem(at: IndexPath(item: firstVisibletRow, section: 0), at: .top, animated: false)
+            }
+        }
+    }
 
+    //MARK:- Actions
+    
+    @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        switch sender {
+        case segmentControlChangeDisplayMode:
+            switch sender.selectedSegmentIndex {
+            case 0:
+                setDisplayMode(to: .list)
+            case 1:
+                setDisplayMode(to: .grid)
+            default:
+                break
+            }
+        default:
+            break
+        }
+    }
+    
+    private enum DisplayMode {
+        case list
+        case grid
+    }
+    
 }
 
 //MARK:- extension: UITableViewDelegate, UITableViewDataSource
