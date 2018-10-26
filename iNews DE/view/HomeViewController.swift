@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         configureView()
-        loadData()
+        loadData(from: .cache)
         setDisplayMode(to: .list)
     }
     
@@ -42,20 +42,33 @@ class HomeViewController: UIViewController {
         
         tableViewNews.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         collectionViewNews.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        
+        tableViewNews.es.addPullToRefresh { [unowned self] in
+            self.loadData(from: .internet, onComplition: { (success: Bool) in
+                self.tableViewNews.es.stopPullToRefresh()
+            })
+        }
     }
     
-    private func loadData(){
-        ApiController.shared.getAllNews { (allNews: [News]?) in
+    private func loadData(from mode: LoadDataMode, onComplition: @escaping (Bool)->() = { _ in }){
+        
+        switch mode {
+        case .cache:
+            break
+        case .internet:
             
-            if let allNews = allNews {
-                self.news = allNews
-            } else {
-                self.news = []
+            ApiController.shared.getAllNews { (allNews: [News]?) in
+                if let allNews = allNews {
+                    self.news = allNews
+                    self.tableViewNews.reloadData()
+                    self.collectionViewNews.reloadData()
+                }
+                
+                onComplition(allNews != nil)
             }
             
-            self.tableViewNews.reloadData()
-            self.collectionViewNews.reloadData()
         }
+        
     }
     
     private func setDisplayMode(to newDisplayMode: DisplayMode){
@@ -114,9 +127,16 @@ class HomeViewController: UIViewController {
         }
     }
     
+    //MARK:- Enums
+    
     private enum DisplayMode {
         case list
         case grid
+    }
+    
+    private enum LoadDataMode {
+        case cache
+        case internet
     }
     
 }
