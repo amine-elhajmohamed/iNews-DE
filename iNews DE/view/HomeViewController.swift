@@ -11,6 +11,8 @@ import SDWebImage
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var btnTryAgain: UIButton!
+    
     @IBOutlet weak var labelMessage: UILabel!
     
     @IBOutlet weak var segmentControlChangeDisplayMode: UISegmentedControl!
@@ -18,6 +20,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableViewNews: UITableView!
     @IBOutlet weak var collectionViewNews: UICollectionView!
     
+    @IBOutlet weak var viewNoContent: UIView!
     @IBOutlet weak var viewMessage: UIView!
     
     private var currentDisplayMode: DisplayMode!
@@ -38,6 +41,7 @@ class HomeViewController: UIViewController {
     //MARK:- View configurations
     
     private func configureView(){
+        viewNoContent.isHidden = true
         viewMessage.isHidden = true
         
         tableViewNews.delegate = self
@@ -79,9 +83,14 @@ class HomeViewController: UIViewController {
                     SDImageCache.shared().clearDisk()
                     NewsController.shared.saveNewsToCache(news: news)
                     
+                    self.viewNoContent.isHidden = true
                     self.tableViewNews.reloadData()
                     self.collectionViewNews.reloadData()
                 } else {
+                    if self.news.count == 0 {
+                        self.viewNoContent.isHidden = false
+                    }
+                    
                     if let newsUpdatedDate = NewsController.shared.getNewsUpdatedDate() {
                         self.showViewMessage(withText: "Failed to load - Last update : \(DateUtils.shared.differenceBetweenDates(from: newsUpdatedDate, to: Date())) ago")
                     } else {
@@ -157,6 +166,15 @@ class HomeViewController: UIViewController {
     }
 
     //MARK:- Actions
+    
+    @IBAction func btnClicked(_ sender: UIButton) {
+        switch sender {
+        case btnTryAgain:
+            tableViewNews.es.startPullToRefresh()
+        default:
+            break
+        }
+    }
     
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         switch sender {
