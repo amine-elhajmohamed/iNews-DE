@@ -29,6 +29,9 @@ class HomeViewController: UIViewController {
     
     private var news: [News] = []
     
+    private var tableViewNewsIsRefreshing = false
+    private var collectionViewNewsIsRefreshing = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,9 +59,25 @@ class HomeViewController: UIViewController {
         collectionViewNews.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         
         tableViewNews.es.addPullToRefresh { [unowned self] in
+            self.tableViewNewsIsRefreshing = true
+            
+            if !self.collectionViewNewsIsRefreshing {
+                self.collectionViewNews.es.startPullToRefresh()
+            }
+            
             self.loadData(from: .internet, onComplition: { (success: Bool) in
                 self.tableViewNews.es.stopPullToRefresh()
+                self.collectionViewNews.es.stopPullToRefresh()
+                self.tableViewNewsIsRefreshing = false
+                self.collectionViewNewsIsRefreshing = false
             })
+        }
+        
+        collectionViewNews.es.addPullToRefresh { [unowned self] in
+            self.collectionViewNewsIsRefreshing = true
+            if !self.tableViewNewsIsRefreshing {
+                self.tableViewNews.es.startPullToRefresh()
+            }
         }
     }
     
@@ -78,9 +97,11 @@ class HomeViewController: UIViewController {
             NewsController.shared.getNewsFromInternet { (news: [News]?) in
                 if let news = news {
                     self.news = news
-                    
+                    /*
+                     // Need to only clear the unused images
                     SDImageCache.shared().clearMemory()
                     SDImageCache.shared().clearDisk()
+                     */
                     NewsController.shared.saveNewsToCache(news: news)
                     
                     self.viewNoContent.isHidden = true
