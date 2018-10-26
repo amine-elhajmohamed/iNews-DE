@@ -53,7 +53,7 @@ class NewsCollectionViewCell: UICollectionViewCell {
         }
         
         if let newsOriginalImageUrl = news.originalImageUrl {
-            //Used to download the original image to the cache
+            //Download the original image to the cache
             SDWebImageManager.shared().loadImage(with: URL(string: ApiController.baseUrl + newsOriginalImageUrl), options: [.retryFailed], progress: nil) { (image: UIImage?, data: Data?, error: Error?, cacheType: SDImageCacheType, success: Bool, url: URL?) in
             }
         }

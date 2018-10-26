@@ -8,7 +8,7 @@
 
 import Foundation
 
-class News {
+class News: NSObject, NSCoding {
     
     var id: Int
     var title: String
@@ -28,6 +28,28 @@ class News {
         self.shortDescription = shortDescription
         self.body = body
         self.fullUrl = fullUrl
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(id, forKey: "id")
+        aCoder.encode(title, forKey: "title")
+        aCoder.encode(subTitle, forKey: "subTitle")
+        aCoder.encode(thumbImageUrl, forKey: "thumbImageUrl")
+        aCoder.encode(originalImageUrl, forKey: "originalImageUrl")
+        aCoder.encode(shortDescription, forKey: "shortDescription")
+        aCoder.encode(body, forKey: "body")
+        aCoder.encode(fullUrl, forKey: "fullUrl")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        id = aDecoder.decodeInteger(forKey: "id")
+        title = aDecoder.decodeObject(forKey: "title") as! String
+        subTitle = aDecoder.decodeObject(forKey: "subTitle") as! String
+        thumbImageUrl = aDecoder.decodeObject(forKey: "thumbImageUrl") as? String
+        originalImageUrl = aDecoder.decodeObject(forKey: "originalImageUrl") as? String
+        shortDescription = aDecoder.decodeObject(forKey: "shortDescription") as! String
+        body = aDecoder.decodeObject(forKey: "body") as! String
+        fullUrl = aDecoder.decodeObject(forKey: "fullUrl") as! String
     }
     
 }

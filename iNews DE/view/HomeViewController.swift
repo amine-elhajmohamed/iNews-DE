@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HomeViewController: UIViewController {
+    
+    @IBOutlet weak var labelMessage: UILabel!
     
     @IBOutlet weak var segmentControlChangeDisplayMode: UISegmentedControl!
     
     @IBOutlet weak var tableViewNews: UITableView!
     @IBOutlet weak var collectionViewNews: UICollectionView!
+    
+    @IBOutlet weak var viewMessage: UIView!
     
     private var currentDisplayMode: DisplayMode!
     
@@ -26,12 +31,15 @@ class HomeViewController: UIViewController {
 
         configureView()
         loadData(from: .cache)
+        loadData(from: .internet)
         setDisplayMode(to: .list)
     }
     
     //MARK:- View configurations
     
     private func configureView(){
+        viewMessage.isHidden = true
+        
         tableViewNews.delegate = self
         tableViewNews.dataSource = self
         
@@ -54,20 +62,59 @@ class HomeViewController: UIViewController {
         
         switch mode {
         case .cache:
-            break
+            if let news = NewsController.shared.getNewsFromCache() {
+                self.news = news
+                self.tableViewNews.reloadData()
+                self.collectionViewNews.reloadData()
+                onComplition(true)
+            } else {
+                onComplition(false)
+            }
         case .internet:
-            
-            ApiController.shared.getAllNews { (allNews: [News]?) in
-                if let allNews = allNews {
-                    self.news = allNews
+            NewsController.shared.getNewsFromInternet { (news: [News]?) in
+                if let news = news {
+                    self.news = news
+                    
+                    SDImageCache.shared().clearMemory()
+                    SDImageCache.shared().clearDisk()
+                    NewsController.shared.saveNewsToCache(news: news)
+                    
                     self.tableViewNews.reloadData()
                     self.collectionViewNews.reloadData()
+                } else {
+                    if let newsUpdatedDate = NewsController.shared.getNewsUpdatedDate() {
+                        self.showViewMessage(withText: "Failed to load - Last update : \(DateUtils.shared.differenceBetweenDates(from: newsUpdatedDate, to: Date())) ago")
+                    } else {
+                        self.showViewMessage(withText: "Failed to load")
+                    }
                 }
                 
-                onComplition(allNews != nil)
+                onComplition(news != nil)
             }
             
         }
+        
+    }
+    
+    private func showViewMessage(withText text: String){
+        labelMessage.text = text
+        
+        guard viewMessage.isHidden else {
+            return
+        }
+        
+        viewMessage.transform = CGAffineTransform(translationX: 0, y: viewMessage.frame.height)
+        viewMessage.isHidden = false
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.viewMessage.transform = CGAffineTransform(translationX: 0, y: 0)
+        })
+        
+        UIView.animate(withDuration: 0.5, delay: 3, animations: {
+            self.viewMessage.transform = CGAffineTransform(translationX: 0, y: self.viewMessage.frame.height)
+        }, completion: { (_) in
+            self.viewMessage.isHidden = true
+        })
         
     }
     

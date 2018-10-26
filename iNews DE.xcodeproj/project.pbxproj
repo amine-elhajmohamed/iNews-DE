@@ -17,6 +17,8 @@
 		3323D8D22183569E004D0F42 /* ESRefreshProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3323D8C82183569E004D0F42 /* ESRefreshProtocol.swift */; };
 		3323D8D32183569E004D0F42 /* ES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3323D8C92183569E004D0F42 /* ES.swift */; };
 		3323D8D42183569E004D0F42 /* ESPullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3323D8CA2183569E004D0F42 /* ESPullToRefresh.swift */; };
+		3326BA5A218395EF00C35F08 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3326BA59218395EF00C35F08 /* NewsController.swift */; };
+		3326BA5C2183A84500C35F08 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3326BA5B2183A84500C35F08 /* DateUtils.swift */; };
 		335059B7217FCD43004BA552 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335059B6217FCD43004BA552 /* AppDelegate.swift */; };
 		335059BC217FCD43004BA552 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 335059BA217FCD43004BA552 /* Main.storyboard */; };
 		335059BE217FCD44004BA552 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 335059BD217FCD44004BA552 /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 		3323D8C82183569E004D0F42 /* ESRefreshProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESRefreshProtocol.swift; sourceTree = "<group>"; };
 		3323D8C92183569E004D0F42 /* ES.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ES.swift; sourceTree = "<group>"; };
 		3323D8CA2183569E004D0F42 /* ESPullToRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESPullToRefresh.swift; sourceTree = "<group>"; };
+		3326BA59218395EF00C35F08 /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
+		3326BA5B2183A84500C35F08 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		335059B3217FCD43004BA552 /* iNews DE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iNews DE.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		335059B6217FCD43004BA552 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		335059BB217FCD43004BA552 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -153,7 +157,9 @@
 			isa = PBXGroup;
 			children = (
 				335059CB217FCE52004BA552 /* ApiController.swift */,
+				3326BA59218395EF00C35F08 /* NewsController.swift */,
 				335059CF217FD8FA004BA552 /* NewsUtils.swift */,
+				3326BA5B2183A84500C35F08 /* DateUtils.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3326BA5A218395EF00C35F08 /* NewsController.swift in Sources */,
 				335059D0217FD8FA004BA552 /* NewsUtils.swift in Sources */,
 				3323D8D32183569E004D0F42 /* ES.swift in Sources */,
 				3323D8D22183569E004D0F42 /* ESRefreshProtocol.swift in Sources */,
@@ -329,6 +336,7 @@
 				3323D8CF2183569E004D0F42 /* ESRefreshHeaderAnimator.swift in Sources */,
 				335059CE217FCF1F004BA552 /* News.swift in Sources */,
 				3323D8CB2183569E004D0F42 /* ESPullToRefresh+Manager.swift in Sources */,
+				3326BA5C2183A84500C35F08 /* DateUtils.swift in Sources */,
 				3323D8D12183569E004D0F42 /* ESRefreshFooterAnimator.swift in Sources */,
 				335059CC217FCE52004BA552 /* ApiController.swift in Sources */,
 				335059D221810DE1004BA552 /* HomeViewController.swift in Sources */,

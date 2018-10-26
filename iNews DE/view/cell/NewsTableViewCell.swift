@@ -56,7 +56,7 @@ class NewsTableViewCell: UITableViewCell {
         }
         
         if let newsThumbImageUrl = news.thumbImageUrl {
-            //Used to download the thumb image to the cache
+            //Download the thumb image to the cache
             SDWebImageManager.shared().loadImage(with: URL(string: ApiController.baseUrl + newsThumbImageUrl), options: [.retryFailed], progress: nil) { (image: UIImage?, data: Data?, error: Error?, cacheType: SDImageCacheType, success: Bool, url: URL?) in
             }
         }
