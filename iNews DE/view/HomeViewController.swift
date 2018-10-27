@@ -67,12 +67,14 @@ class HomeViewController: UIViewController {
                 self.collectionViewNews.es.startPullToRefresh()
             }
             
-            self.loadData(from: .internet, onComplition: { (success: Bool) in
-                self.tableViewNews.es.stopPullToRefresh()
-                self.collectionViewNews.es.stopPullToRefresh()
-                self.tableViewNewsIsRefreshing = false
-                self.collectionViewNewsIsRefreshing = false
-            })
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
+                self.loadData(from: .internet, onComplition: { (success: Bool) in
+                    self.tableViewNews.es.stopPullToRefresh()
+                    self.collectionViewNews.es.stopPullToRefresh()
+                    self.tableViewNewsIsRefreshing = false
+                    self.collectionViewNewsIsRefreshing = false
+                })
+            })   
         }
         
         collectionViewNews.es.addPullToRefresh { [unowned self] in
