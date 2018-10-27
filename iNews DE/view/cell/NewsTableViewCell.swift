@@ -33,11 +33,6 @@ class NewsTableViewCell: UITableViewCell {
         backgroundColor = UIColor.clear
         
         bgView.layer.cornerRadius = 15
-        bgViewForShadow.layer.cornerRadius = 15
-        
-        bgViewForShadow.layer.shadowColor = UIColor.black.cgColor
-        bgViewForShadow.layer.shadowOpacity = 0.2
-        bgViewForShadow.layer.shadowOffset = CGSize(width: 5, height: 5)
     }
     
     override func prepareForReuse() {

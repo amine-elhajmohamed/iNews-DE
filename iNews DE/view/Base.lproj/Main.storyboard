@@ -184,7 +184,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qs6-Jo-vHY">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="19H-g9-M5Z">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="19H-g9-M5Z" customClass="ViewWithRoundedCornersAndShadow" customModule="iNews_DE" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="10" width="394" height="185"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
@@ -194,7 +194,7 @@
                                                     <constraint firstAttribute="width" secondItem="MJN-j4-4JI" secondAttribute="height" multiplier="728:342" id="xfG-Xm-cyJ"/>
                                                 </constraints>
                                             </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xzp-v5-awU">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xzp-v5-awU" customClass="ViewWithRoundedCornersAndShadow" customModule="iNews_DE" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="205.00000000000003" width="394" height="103.33333333333334"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LBL_TITLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZN-0S-pLE">

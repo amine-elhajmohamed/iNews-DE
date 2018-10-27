@@ -33,16 +33,6 @@ class NewsDetailsViewController: UIViewController {
     
     private func configureView(){
         img.layer.cornerRadius = 15
-        bgViewForImg.layer.cornerRadius = 15
-        viewDetails.layer.cornerRadius = 15
-        
-        bgViewForImg.layer.shadowColor = UIColor.black.cgColor
-        bgViewForImg.layer.shadowOpacity = 0.2
-        bgViewForImg.layer.shadowOffset = CGSize(width: 5, height: 5)
-        
-        viewDetails.layer.shadowColor = UIColor.black.cgColor
-        viewDetails.layer.shadowOpacity = 0.2
-        viewDetails.layer.shadowOffset = CGSize(width: 5, height: 5)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Internet"), style: .plain, target: self, action: #selector(btnOpenInNavigatorClicked))
     }

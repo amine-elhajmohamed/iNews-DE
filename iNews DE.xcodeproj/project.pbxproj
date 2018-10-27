@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		331128232184782B00A54873 /* ViewWithRoundedCornersAndShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331128222184782B00A54873 /* ViewWithRoundedCornersAndShadow.swift */; };
 		3323D8CB2183569E004D0F42 /* ESPullToRefresh+Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3323D8BD2183569E004D0F42 /* ESPullToRefresh+Manager.swift */; };
 		3323D8CC2183569E004D0F42 /* ESRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3323D8BE2183569E004D0F42 /* ESRefreshAnimator.swift */; };
 		3323D8CD2183569E004D0F42 /* ESRefreshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3323D8BF2183569E004D0F42 /* ESRefreshComponent.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		331128222184782B00A54873 /* ViewWithRoundedCornersAndShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithRoundedCornersAndShadow.swift; sourceTree = "<group>"; };
 		3323D8BD2183569E004D0F42 /* ESPullToRefresh+Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ESPullToRefresh+Manager.swift"; sourceTree = "<group>"; };
 		3323D8BE2183569E004D0F42 /* ESRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESRefreshAnimator.swift; sourceTree = "<group>"; };
 		3323D8BF2183569E004D0F42 /* ESRefreshComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESRefreshComponent.swift; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 				F9C94A1ACD8AFC5BF15F3453 /* Pods_iNews_DE.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		331128242184783200A54873 /* style */ = {
+			isa = PBXGroup;
+			children = (
+				331128222184782B00A54873 /* ViewWithRoundedCornersAndShadow.swift */,
+			);
+			path = style;
 			sourceTree = "<group>";
 		};
 		3323D8BB21835637004D0F42 /* External libraries */ = {
@@ -177,6 +187,7 @@
 		335059CA217FCDA2004BA552 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				331128242184783200A54873 /* style */,
 				335059D321810EB1004BA552 /* cell */,
 				335059BF217FCD44004BA552 /* LaunchScreen.storyboard */,
 				335059BA217FCD43004BA552 /* Main.storyboard */,
@@ -330,6 +341,7 @@
 				335059D0217FD8FA004BA552 /* NewsUtils.swift in Sources */,
 				3323D8D32183569E004D0F42 /* ES.swift in Sources */,
 				3323D8D22183569E004D0F42 /* ESRefreshProtocol.swift in Sources */,
+				331128232184782B00A54873 /* ViewWithRoundedCornersAndShadow.swift in Sources */,
 				3323D8D42183569E004D0F42 /* ESPullToRefresh.swift in Sources */,
 				335059D921811C58004BA552 /* NewsCollectionViewCell.swift in Sources */,
 				3326BA5E2183C82100C35F08 /* NewsDetailsViewController.swift in Sources */,
