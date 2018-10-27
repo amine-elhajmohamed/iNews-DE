@@ -10,8 +10,6 @@ import Foundation
 
 class ApiController {
     
-    static let shared = ApiController()
-    
     static let baseUrl = "https://www.gamesundbusiness.de"
     
 }

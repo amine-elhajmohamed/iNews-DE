@@ -243,6 +243,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedNews = news[indexPath.row]
+        let newsDetailsVC = storyboard?.instantiateViewController(withIdentifier: "NewsDetailsVC") as! NewsDetailsViewController
+        newsDetailsVC.loadDetailsFrom(news: selectedNews)
+        navigationController?.pushViewController(newsDetailsVC, animated: true)
+    }
+    
 }
 
 //MARK:- extension:  UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewFlowLayout
@@ -258,6 +265,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.loadViewFromNews(news: news[indexPath.row])
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedNews = news[indexPath.row]
+        let newsDetailsVC = storyboard?.instantiateViewController(withIdentifier: "NewsDetailsVC") as! NewsDetailsViewController
+        newsDetailsVC.loadDetailsFrom(news: selectedNews)
+        navigationController?.pushViewController(newsDetailsVC, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
