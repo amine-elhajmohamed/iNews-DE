@@ -37,8 +37,10 @@ class HomeViewController: UIViewController {
 
         configureView()
         loadData(from: .cache)
-        loadData(from: .internet)
         setDisplayMode(to: .list)
+        
+        //To load data from internet with animating the refresh view
+        tableViewNews.es.startPullToRefresh()
     }
     
     //MARK:- View configurations
