@@ -33,6 +33,7 @@
 		335059D7218112E6004BA552 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335059D6218112E6004BA552 /* NewsTableViewCell.swift */; };
 		335059D921811C58004BA552 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335059D821811C58004BA552 /* NewsCollectionViewCell.swift */; };
 		335059DB21811C62004BA552 /* NewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 335059DA21811C62004BA552 /* NewsCollectionViewCell.xib */; };
+		33A3DA4F21BCFDE200510734 /* AppDescription.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 33A3DA4E21BCFDE200510734 /* AppDescription.pdf */; };
 		FAB15642FE1A4FD75EF48D73 /* Pods_iNews_DE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9C94A1ACD8AFC5BF15F3453 /* Pods_iNews_DE.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		335059D6218112E6004BA552 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		335059D821811C58004BA552 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		335059DA21811C62004BA552 /* NewsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCollectionViewCell.xib; sourceTree = "<group>"; };
+		33A3DA4E21BCFDE200510734 /* AppDescription.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AppDescription.pdf; sourceTree = "<group>"; };
 		5EF43E89E0D2400DBBCB4923 /* Pods-iNews DE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iNews DE.release.xcconfig"; path = "Pods/Target Support Files/Pods-iNews DE/Pods-iNews DE.release.xcconfig"; sourceTree = "<group>"; };
 		844730694F65DC17E88DF7B9 /* Pods-iNews DE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iNews DE.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iNews DE/Pods-iNews DE.debug.xcconfig"; sourceTree = "<group>"; };
 		F9C94A1ACD8AFC5BF15F3453 /* Pods_iNews_DE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iNews_DE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +138,7 @@
 		335059AA217FCD43004BA552 = {
 			isa = PBXGroup;
 			children = (
+				33A3DA4E21BCFDE200510734 /* AppDescription.pdf */,
 				335059B5217FCD43004BA552 /* iNews DE */,
 				335059B4217FCD43004BA552 /* Products */,
 				9FD72E99C48E137B2536563B /* Pods */,
@@ -286,6 +289,7 @@
 				335059D521810EC0004BA552 /* NewsTableViewCell.xib in Resources */,
 				335059DB21811C62004BA552 /* NewsCollectionViewCell.xib in Resources */,
 				335059BC217FCD43004BA552 /* Main.storyboard in Resources */,
+				33A3DA4F21BCFDE200510734 /* AppDescription.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
